@@ -96,19 +96,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   5,
                   _incrementIconSize,
                 ),
-                /* IconButton(
-                  icon: Container(
-                    padding: EdgeInsets.all(6),
-                    child: Text('+'),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Colors.white,
-                          width: 1.0,
-                        )),
-                  ),
-                  onPressed: () => () {},
-                ), */
               ],
             )
           ]),
@@ -120,6 +107,160 @@ class _MyHomePageState extends State<MyHomePage> {
           size: _size,
         ),
       ),
+      bottomNavigationBar: SizedBox(
+          height: 190,
+          child: Column(children: [
+            Row(children: <Widget>[
+              Expanded(
+                flex: 8,
+                child: Padding(
+                  padding: EdgeInsets.all(0.0),
+                  child: SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      activeTrackColor: Colors.brown,
+                      inactiveTrackColor: Colors.brown[100],
+                      trackHeight: 3.0,
+                      thumbColor: Colors.brown,
+                      thumbShape:
+                          RoundSliderThumbShape(enabledThumbRadius: 8.0),
+                      overlayShape:
+                          RoundSliderOverlayShape(overlayRadius: 20.0),
+                    ),
+                    child: Slider(
+                      value: _redColorValue,
+                      min: 0.0,
+                      max: 255.0,
+                      divisions: 255,
+                      onChanged: (value) {
+                        setState(() {
+                          _redColorValue = value;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: EdgeInsets.all(0.0),
+                  child: FloatingActionButton(
+                    child: Text(
+                      _redColorValue.toStringAsFixed(0),
+                    ),
+                    backgroundColor: Colors.red,
+                    onPressed: () {
+                      setState(() {
+                        _redColorValue = 255.0;
+                        _greenColorValue = 0;
+                        _blueColorValue = 0;
+                      });
+                    },
+                  ),
+                ),
+              ),
+            ]),
+            Row(children: <Widget>[
+              Expanded(
+                flex: 8,
+                child: Padding(
+                  padding: EdgeInsets.all(0.0),
+                  child: SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      activeTrackColor: Colors.brown,
+                      inactiveTrackColor: Colors.brown[100],
+                      trackHeight: 3.0,
+                      thumbColor: Colors.brown,
+                      thumbShape:
+                          RoundSliderThumbShape(enabledThumbRadius: 8.0),
+                      overlayShape:
+                          RoundSliderOverlayShape(overlayRadius: 20.0),
+                    ),
+                    child: Slider(
+                      value: _greenColorValue,
+                      min: 0.0,
+                      max: 255.0,
+                      divisions: 255,
+                      onChanged: (value) {
+                        setState(() {
+                          _greenColorValue = value;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: EdgeInsets.all(0.0),
+                  child: FloatingActionButton(
+                    child: Text(
+                      _greenColorValue.toStringAsFixed(0),
+                    ),
+                    backgroundColor: Colors.green,
+                    onPressed: () {
+                      setState(() {
+                        _redColorValue = 0;
+                        _greenColorValue = 255;
+                        _blueColorValue = 0;
+                      });
+                    },
+                  ),
+                ),
+              ),
+            ]),
+            Row(children: <Widget>[
+              Expanded(
+                flex: 8,
+                child: Padding(
+                  padding: EdgeInsets.all(0.0),
+                  child: SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      activeTrackColor: Colors.brown,
+                      inactiveTrackColor: Colors.brown[100],
+                      trackHeight: 3.0,
+                      thumbColor: Colors.brown,
+                      thumbShape:
+                          RoundSliderThumbShape(enabledThumbRadius: 8.0),
+                      overlayShape:
+                          RoundSliderOverlayShape(overlayRadius: 20.0),
+                    ),
+                    child: Slider(
+                      value: _blueColorValue,
+                      min: 0.0,
+                      max: 255.0,
+                      divisions: 255,
+                      onChanged: (value) {
+                        setState(() {
+                          _blueColorValue = value;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: EdgeInsets.all(0.0),
+                  child: FloatingActionButton(
+                    child: Text(
+                      _blueColorValue.toStringAsFixed(0),
+                    ),
+                    backgroundColor: Colors.blue,
+                    onPressed: () {
+                      setState(() {
+                        _redColorValue = 0;
+                        _greenColorValue = 0;
+                        _blueColorValue = 255.0;
+                      });
+                    },
+                  ),
+                ),
+              ),
+            ]),
+          ])),
     ));
   }
 }
