@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './widgets/action_button.dart';
+import './widgets/color_slider.dart';
 
 void main() {
   runApp(MyApp());
@@ -108,159 +109,70 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       bottomNavigationBar: SizedBox(
-          height: 190,
-          child: Column(children: [
-            Row(children: <Widget>[
-              Expanded(
-                flex: 8,
-                child: Padding(
-                  padding: EdgeInsets.all(0.0),
-                  child: SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      activeTrackColor: Colors.brown,
-                      inactiveTrackColor: Colors.brown[100],
-                      trackHeight: 3.0,
-                      thumbColor: Colors.brown,
-                      thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 8.0),
-                      overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 20.0),
-                    ),
-                    child: Slider(
-                      value: _redColorValue,
-                      min: 0.0,
-                      max: 255.0,
-                      divisions: 255,
-                      onChanged: (value) {
-                        setState(() {
-                          _redColorValue = value;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: EdgeInsets.all(0.0),
-                  child: FloatingActionButton(
-                    child: Text(
-                      _redColorValue.toStringAsFixed(0),
-                    ),
-                    backgroundColor: Colors.red,
-                    onPressed: () {
-                      setState(() {
-                        _redColorValue = 255.0;
-                        _greenColorValue = 0;
-                        _blueColorValue = 0;
-                      });
-                    },
-                  ),
-                ),
-              ),
-            ]),
-            Row(children: <Widget>[
-              Expanded(
-                flex: 8,
-                child: Padding(
-                  padding: EdgeInsets.all(0.0),
-                  child: SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      activeTrackColor: Colors.brown,
-                      inactiveTrackColor: Colors.brown[100],
-                      trackHeight: 3.0,
-                      thumbColor: Colors.brown,
-                      thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 8.0),
-                      overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 20.0),
-                    ),
-                    child: Slider(
-                      value: _greenColorValue,
-                      min: 0.0,
-                      max: 255.0,
-                      divisions: 255,
-                      onChanged: (value) {
-                        setState(() {
-                          _greenColorValue = value;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: EdgeInsets.all(0.0),
-                  child: FloatingActionButton(
-                    child: Text(
-                      _greenColorValue.toStringAsFixed(0),
-                    ),
-                    backgroundColor: Colors.green,
-                    onPressed: () {
-                      setState(() {
-                        _redColorValue = 0;
-                        _greenColorValue = 255;
-                        _blueColorValue = 0;
-                      });
-                    },
-                  ),
-                ),
-              ),
-            ]),
-            Row(children: <Widget>[
-              Expanded(
-                flex: 8,
-                child: Padding(
-                  padding: EdgeInsets.all(0.0),
-                  child: SliderTheme(
-                    data: SliderTheme.of(context).copyWith(
-                      activeTrackColor: Colors.brown,
-                      inactiveTrackColor: Colors.brown[100],
-                      trackHeight: 3.0,
-                      thumbColor: Colors.brown,
-                      thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 8.0),
-                      overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 20.0),
-                    ),
-                    child: Slider(
-                      value: _blueColorValue,
-                      min: 0.0,
-                      max: 255.0,
-                      divisions: 255,
-                      onChanged: (value) {
-                        setState(() {
-                          _blueColorValue = value;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: EdgeInsets.all(0.0),
-                  child: FloatingActionButton(
-                    child: Text(
-                      _blueColorValue.toStringAsFixed(0),
-                    ),
-                    backgroundColor: Colors.blue,
-                    onPressed: () {
-                      setState(() {
-                        _redColorValue = 0;
-                        _greenColorValue = 0;
-                        _blueColorValue = 255.0;
-                      });
-                    },
-                  ),
-                ),
-              ),
-            ]),
-          ])),
+        height: 190,
+        child: Column(children: [
+          ColorSlider(
+            Colors.red,
+            _redColorValue,
+            _greenColorValue,
+            _blueColorValue,
+            (double val) {
+              setState(() {
+                _redColorValue = val;
+              });
+            },
+            () {
+              setState(
+                () {
+                  _redColorValue = 255;
+                  _greenColorValue = 0;
+                  _blueColorValue = 0;
+                },
+              );
+            },
+          ),
+          ColorSlider(
+            Colors.green,
+            _redColorValue,
+            _greenColorValue,
+            _blueColorValue,
+            (double val) {
+              setState(() {
+                _greenColorValue = val;
+              });
+            },
+            () {
+              setState(
+                () {
+                  _redColorValue = 0;
+                  _greenColorValue = 255;
+                  _blueColorValue = 0;
+                },
+              );
+            },
+          ),
+          ColorSlider(
+            Colors.blue,
+            _redColorValue,
+            _greenColorValue,
+            _blueColorValue,
+            (double val) {
+              setState(() {
+                _blueColorValue = val;
+              });
+            },
+            () {
+              setState(
+                () {
+                  _redColorValue = 0;
+                  _greenColorValue = 0;
+                  _blueColorValue = 255;
+                },
+              );
+            },
+          ),
+        ]),
+      ),
     ));
   }
 }
