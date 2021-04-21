@@ -25,13 +25,24 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
     });
   } */
+  double _redColorValue = 0;
+  double _greenColorValue = 0;
+  double _blueColorValue = 0;
+  double _size = 100;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(),
-      body: Center(),
+      body: Center(
+        child: Icon(
+          Icons.alarm,
+          color: Color.fromRGBO(_redColorValue.toInt(),
+              _greenColorValue.toInt(), _blueColorValue.toInt(), 1.0),
+          size: _size,
+        ),
+      ),
     ));
   }
 }
