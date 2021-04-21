@@ -35,9 +35,79 @@ class _MyHomePageState extends State<MyHomePage> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: Text('My Icon'),
-        backgroundColor: Colors.brown,
-      ),
+          title: Text('My Icon'),
+          backgroundColor: Colors.brown,
+          actions: [
+            Row(
+              children: [
+                IconButton(
+                  icon: Container(
+                    padding: EdgeInsets.all(7),
+                    child: Text('-'),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 1.0,
+                        )),
+                  ),
+                  onPressed: () => () {},
+                ),
+                IconButton(
+                  icon: Container(
+                    padding: EdgeInsets.all(4),
+                    child: Text('S'),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 1.0,
+                        )),
+                  ),
+                  onPressed: () => () {},
+                ),
+                IconButton(
+                  icon: Container(
+                    padding: EdgeInsets.all(2),
+                    child: Text('M'),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 1.0,
+                        )),
+                  ),
+                  onPressed: () => () {},
+                ),
+                IconButton(
+                  icon: Container(
+                    padding: EdgeInsets.all(5),
+                    child: Text('L'),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 1.0,
+                        )),
+                  ),
+                  onPressed: () => () {},
+                ),
+                IconButton(
+                  icon: Container(
+                    padding: EdgeInsets.all(6),
+                    child: Text('+'),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 1.0,
+                        )),
+                  ),
+                  onPressed: () => () {},
+                ),
+              ],
+            )
+          ]),
       body: Center(
         child: Icon(
           Icons.alarm,
