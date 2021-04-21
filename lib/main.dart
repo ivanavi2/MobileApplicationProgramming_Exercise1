@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './widgets/action_button.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,6 +31,30 @@ class _MyHomePageState extends State<MyHomePage> {
   double _blueColorValue = 0;
   double _size = 100;
 
+  void _setIconSize(double size) {
+    setState(() {
+      _size = size;
+    });
+  }
+
+  void _incrementIconSize() {
+    setState(() {
+      if (_size == 400) {
+        return;
+      }
+      _size += 50;
+    });
+  }
+
+  void _decrementIconSize() {
+    setState(() {
+      if (_size == 50) {
+        return;
+      }
+      _size -= 50;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -40,59 +65,38 @@ class _MyHomePageState extends State<MyHomePage> {
           actions: [
             Row(
               children: [
-                IconButton(
-                  icon: Container(
-                    padding: EdgeInsets.all(7),
-                    child: Text('-'),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Colors.white,
-                          width: 1.0,
-                        )),
-                  ),
-                  onPressed: () => () {},
+                ActionButton(
+                  '-',
+                  8,
+                  _decrementIconSize,
                 ),
-                IconButton(
-                  icon: Container(
-                    padding: EdgeInsets.all(4),
-                    child: Text('S'),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Colors.white,
-                          width: 1.0,
-                        )),
-                  ),
-                  onPressed: () => () {},
+                ActionButton(
+                  'S',
+                  5,
+                  () {
+                    _setIconSize(100);
+                  },
                 ),
-                IconButton(
-                  icon: Container(
-                    padding: EdgeInsets.all(2),
-                    child: Text('M'),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Colors.white,
-                          width: 1.0,
-                        )),
-                  ),
-                  onPressed: () => () {},
+                ActionButton(
+                  'M',
+                  3,
+                  () {
+                    _setIconSize(250);
+                  },
                 ),
-                IconButton(
-                  icon: Container(
-                    padding: EdgeInsets.all(5),
-                    child: Text('L'),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Colors.white,
-                          width: 1.0,
-                        )),
-                  ),
-                  onPressed: () => () {},
+                ActionButton(
+                  'L',
+                  5,
+                  () {
+                    _setIconSize(400);
+                  },
                 ),
-                IconButton(
+                ActionButton(
+                  '+',
+                  5,
+                  _incrementIconSize,
+                ),
+                /* IconButton(
                   icon: Container(
                     padding: EdgeInsets.all(6),
                     child: Text('+'),
@@ -104,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         )),
                   ),
                   onPressed: () => () {},
-                ),
+                ), */
               ],
             )
           ]),
