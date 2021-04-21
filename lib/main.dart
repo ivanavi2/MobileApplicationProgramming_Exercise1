@@ -34,7 +34,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('My Icon'),
+        backgroundColor: Colors.brown,
+      ),
       body: Center(
         child: Icon(
           Icons.alarm,
