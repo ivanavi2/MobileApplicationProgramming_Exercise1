@@ -65,41 +65,42 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text('My Icon'),
           backgroundColor: Colors.brown,
           actions: [
-            Row(
-              children: [
-                ActionButton(
-                  '-',
-                  8,
-                  _decrementIconSize,
-                ),
-                ActionButton(
-                  'S',
-                  5,
-                  () {
-                    _setIconSize(100);
-                  },
-                ),
-                ActionButton(
-                  'M',
-                  3,
-                  () {
-                    _setIconSize(250);
-                  },
-                ),
-                ActionButton(
-                  'L',
-                  5,
-                  () {
-                    _setIconSize(400);
-                  },
-                ),
-                ActionButton(
-                  '+',
-                  5,
-                  _incrementIconSize,
-                ),
-              ],
-            )
+            if (_checked1)
+              Row(
+                children: [
+                  ActionButton(
+                    '-',
+                    8,
+                    _decrementIconSize,
+                  ),
+                  ActionButton(
+                    'S',
+                    5,
+                    () {
+                      _setIconSize(100);
+                    },
+                  ),
+                  ActionButton(
+                    'M',
+                    3,
+                    () {
+                      _setIconSize(250);
+                    },
+                  ),
+                  ActionButton(
+                    'L',
+                    5,
+                    () {
+                      _setIconSize(400);
+                    },
+                  ),
+                  ActionButton(
+                    '+',
+                    5,
+                    _incrementIconSize,
+                  ),
+                ],
+              ),
           ]),
       body: Center(
         child: Icon(
@@ -111,68 +112,70 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: SizedBox(
         height: 190,
-        child: Column(children: [
-          ColorSlider(
-            Colors.red,
-            _redColorValue,
-            _greenColorValue,
-            _blueColorValue,
-            (double val) {
-              setState(() {
-                _redColorValue = val;
-              });
-            },
-            () {
-              setState(
-                () {
-                  _redColorValue = 255;
-                  _greenColorValue = 0;
-                  _blueColorValue = 0;
-                },
-              );
-            },
-          ),
-          ColorSlider(
-            Colors.green,
-            _redColorValue,
-            _greenColorValue,
-            _blueColorValue,
-            (double val) {
-              setState(() {
-                _greenColorValue = val;
-              });
-            },
-            () {
-              setState(
-                () {
-                  _redColorValue = 0;
-                  _greenColorValue = 255;
-                  _blueColorValue = 0;
-                },
-              );
-            },
-          ),
-          ColorSlider(
-            Colors.blue,
-            _redColorValue,
-            _greenColorValue,
-            _blueColorValue,
-            (double val) {
-              setState(() {
-                _blueColorValue = val;
-              });
-            },
-            () {
-              setState(
-                () {
-                  _redColorValue = 0;
-                  _greenColorValue = 0;
-                  _blueColorValue = 255;
-                },
-              );
-            },
-          ),
-        ]),
+        child: !_checked2
+            ? null
+            : Column(children: [
+                ColorSlider(
+                  Colors.red,
+                  _redColorValue,
+                  _greenColorValue,
+                  _blueColorValue,
+                  (double val) {
+                    setState(() {
+                      _redColorValue = val;
+                    });
+                  },
+                  () {
+                    setState(
+                      () {
+                        _redColorValue = 255;
+                        _greenColorValue = 0;
+                        _blueColorValue = 0;
+                      },
+                    );
+                  },
+                ),
+                ColorSlider(
+                  Colors.green,
+                  _redColorValue,
+                  _greenColorValue,
+                  _blueColorValue,
+                  (double val) {
+                    setState(() {
+                      _greenColorValue = val;
+                    });
+                  },
+                  () {
+                    setState(
+                      () {
+                        _redColorValue = 0;
+                        _greenColorValue = 255;
+                        _blueColorValue = 0;
+                      },
+                    );
+                  },
+                ),
+                ColorSlider(
+                  Colors.blue,
+                  _redColorValue,
+                  _greenColorValue,
+                  _blueColorValue,
+                  (double val) {
+                    setState(() {
+                      _blueColorValue = val;
+                    });
+                  },
+                  () {
+                    setState(
+                      () {
+                        _redColorValue = 0;
+                        _greenColorValue = 0;
+                        _blueColorValue = 255;
+                      },
+                    );
+                  },
+                ),
+              ]),
       ),
       drawer: Drawer(
         child: ListView(children: <Widget>[
