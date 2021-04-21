@@ -31,7 +31,8 @@ class _MyHomePageState extends State<MyHomePage> {
   double _greenColorValue = 0;
   double _blueColorValue = 0;
   double _size = 100;
-
+  bool _checked1 = true;
+  bool _checked2 = true;
   void _setIconSize(double size) {
     setState(() {
       _size = size;
@@ -171,6 +172,30 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             },
           ),
+        ]),
+      ),
+      drawer: Drawer(
+        child: ListView(children: <Widget>[
+          Card(
+              child: CheckboxListTile(
+            title: Text('Allow resize?'),
+            value: _checked1,
+            onChanged: (bool value) {
+              setState(() {
+                _checked1 = value;
+              });
+            },
+          )),
+          Card(
+              child: CheckboxListTile(
+            title: Text('Allow change primer color?'),
+            value: _checked2,
+            onChanged: (bool value) {
+              setState(() {
+                _checked2 = value;
+              });
+            },
+          )),
         ]),
       ),
     ));
